@@ -1,0 +1,16 @@
+{
+    "name": "laurel/menu",
+    "description": "Simple menu for laravel",
+    "type": "library",
+    "require": {
+        "laurel/multi-route": "^1.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Prokhorenko Vladyslav",
+            "email": "random.person.1907@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable"
+}
