@@ -3,7 +3,8 @@
     "description": "Simple menu for laravel",
     "type": "library",
     "require": {
-        "laurel/multi-route": "^1.0"
+        "laurel/multi-route": "^1.0",
+        "spatie/laravel-translatable": "^4.3"
     },
     "license": "MIT",
     "authors": [

@@ -27,6 +27,8 @@ class CreateMenuItemsTable extends Migration
             Schema::table('paths', function (Blueprint $table) {
                $table->foreignId('menu_item_id')->after('parent_id')->nullable();
             });
+        } else {
+            throw new Exception('Table paths has not been found');
         }
     }
 
