@@ -31,7 +31,7 @@ class MenuItem extends Model
      *
      * @var string[]
      */
-    protected $fillable = ["name", "attributes", "path"];
+    protected $fillable = ["name", "slug", "attributes", "path"];
 
     /**
      * Cast properties
