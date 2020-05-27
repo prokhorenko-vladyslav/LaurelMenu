@@ -16,6 +16,8 @@ class CreateMenusTable extends Migration
         Schema::create('menus', function (Blueprint $table) {
             $table->id();
             $table->json('name');
+            $table->string('slug')->unique();
+            $table->json('attributes')->nullable();
             $table->foreignId('user_id')->nullable();
             $table->timestamps();
         });

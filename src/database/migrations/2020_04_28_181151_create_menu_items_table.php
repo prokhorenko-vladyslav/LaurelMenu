@@ -10,24 +10,20 @@ class CreateMenuItemsTable extends Migration
      * Run the migrations.
      *
      * @return void
+     * @throws Exception
      */
     public function up()
     {
         Schema::create('menu_items', function (Blueprint $table) {
             $table->id();
             $table->json('name');
+            $table->string('slug')->unique();
             $table->json('attributes')->nullable();
             $table->foreignId('menu_id');
             $table->foreignId('path_id');
             $table->foreignId('user_id')->nullable();
             $table->timestamps();
         });
-
-        if (Schema::hasTable('paths')) {
-            Schema::table('paths', function (Blueprint $table) {
-               $table->foreignId('menu_item_id')->after('parent_id')->nullable();
-            });
-        }
     }
 
     /**
