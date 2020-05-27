@@ -19,6 +19,7 @@ class MenuServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->mergeConfigFrom(__DIR__ . "/../../config/menu.php", 'menu');
         $this->registerHelper();
     }
 
@@ -44,7 +45,6 @@ class MenuServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->loadMigrationsFrom(__DIR__ . "/../../database/migrations");
-        $this->mergeConfigFrom(__DIR__ . "/../../config/menu.php", 'menu');
         $this->publishes([
             __DIR__ . "/../../config/menu.php" => config_path('/menu.php')
         ], 'config');
