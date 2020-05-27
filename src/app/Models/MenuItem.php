@@ -5,7 +5,6 @@ namespace Laurel\Menu\App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Laurel\Menu\App\Traits\HasUserRelation;
-use Laurel\MultiRoute\App\Models\Path;
 use Spatie\Translatable\HasTranslations;
 
 /**
@@ -49,7 +48,7 @@ class MenuItem extends Model
      */
     public function menu() : BelongsTo
     {
-        return $this->belongsTo(Menu::class);
+        return $this->belongsTo(config('menu.menu_model'));
     }
 
     /**
@@ -57,7 +56,7 @@ class MenuItem extends Model
      */
     public function path() : BelongsTo
     {
-        return $this->belongsTo(Path::class);
+        return $this->belongsTo(config('multi-route.path_model'));
     }
 
     /**

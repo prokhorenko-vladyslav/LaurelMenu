@@ -21,6 +21,6 @@ class Path extends Model
      */
     public function menuItems(): HasMany
     {
-        return $this->hasMany(MenuItem::class);
+        return $this->hasMany(config('menu.menu_item_model'));
     }
 }
