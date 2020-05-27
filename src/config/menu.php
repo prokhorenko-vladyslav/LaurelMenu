@@ -14,4 +14,14 @@
          * User model
          */
         'user_model' => config('auth.providers.users.model'),
+
+        /**
+         * Menu model
+         */
+        'menu_model' => \Laurel\Menu\App\Models\Menu::class,
+
+        /**
+         * Menu item model
+         */
+        'menu_item_model' => \Laurel\Menu\App\Models\MenuItem::class,
     ];
