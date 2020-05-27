@@ -21,7 +21,6 @@ class CreateMenuItemsTable extends Migration
             $table->json('attributes')->nullable();
             $table->foreignId('menu_id');
             $table->foreignId('path_id')->nullable();
-            $table->string('path')->nullable();
             $table->foreignId('user_id')->nullable();
             $table->timestamps();
         });
