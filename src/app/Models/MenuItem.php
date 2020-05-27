@@ -31,7 +31,7 @@ class MenuItem extends Model
      *
      * @var string[]
      */
-    protected $fillable = ["name", "attributes"];
+    protected $fillable = ["name", "attributes", "path"];
 
     /**
      * Cast properties
@@ -58,5 +58,31 @@ class MenuItem extends Model
     public function path() : BelongsTo
     {
         return $this->belongsTo(Path::class);
+    }
+
+    /**
+     * Setter for path
+     *
+     * @param string $path
+     */
+    public function setPathAttribute(string $path)
+    {
+        if (!empty($this->attributes['path_id'])) {
+            $this->attribbutes['path_id'] = null;
+        }
+        $this->attributes['path'] = $path;
+    }
+
+    /**
+     * Setter for path_id
+     *
+     * @param int $pathId
+     */
+    public function setPathIdAttribute(int $pathId)
+    {
+        if (!empty($this->attributes['path'])) {
+            $this->attribbutes['path'] = null;
+        }
+        $this->attributes['path_id'] = $pathId;
     }
 }
