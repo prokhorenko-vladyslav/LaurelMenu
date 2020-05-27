@@ -47,8 +47,30 @@ class Menu extends Model
      *
      * @return HasMany
      */
-    public function menu() : HasMany
+    public function menuItems() : HasMany
     {
         return $this->hasMany(MenuItem::class);
+    }
+
+    /**
+     * Returns menu using id
+     *
+     * @param int $id
+     * @return static|null
+     */
+    public static function findById(int $id) : ?self
+    {
+        return self::find($id);
+    }
+
+    /**
+     * Returns menu using slug
+     *
+     * @param string $slug
+     * @return static|null
+     */
+    public static function findBySlug(string $slug) : ?self
+    {
+        return self::where('slug', $slug)->first();
     }
 }

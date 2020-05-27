@@ -59,4 +59,26 @@ class MenuItem extends Model
     {
         return $this->belongsTo(Path::class);
     }
+
+    /**
+     * Returns menu item using id
+     *
+     * @param int $id
+     * @return static|null
+     */
+    public static function findById(int $id) : ?self
+    {
+        return self::find($id);
+    }
+
+    /**
+     * Returns menu item using slug
+     *
+     * @param string $slug
+     * @return static|null
+     */
+    public static function findBySlug(string $slug) : ?self
+    {
+        return self::where('slug', $slug)->first();
+    }
 }

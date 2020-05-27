@@ -20,18 +20,10 @@ class CreateMenuItemsTable extends Migration
             $table->string('slug')->unique();
             $table->json('attributes')->nullable();
             $table->foreignId('menu_id');
-            $table->foreignId('path_id')->nullable();
+            $table->foreignId('path_id');
             $table->foreignId('user_id')->nullable();
             $table->timestamps();
         });
-
-        if (Schema::hasTable('paths')) {
-            Schema::table('paths', function (Blueprint $table) {
-               $table->foreignId('menu_item_id')->after('parent_id')->nullable();
-            });
-        } else {
-            throw new Exception('Table paths has not been found');
-        }
     }
 
     /**
