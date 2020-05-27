@@ -73,4 +73,20 @@ class Menu extends Model
     {
         return self::where('slug', $slug)->first();
     }
+
+    /**
+     * Overriding of delete method of model.
+     * Now, it delete menu with items, if it has been setted in config
+     *
+     * @return bool|null
+     * @throws Exception
+     */
+    public function delete()
+    {
+        if (config('menu.delete_items_on_delete_menu')) {
+            $this->menuItems()->delete();
+        }
+
+        return parent::delete();
+    }
 }
