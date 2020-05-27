@@ -6,6 +6,12 @@
         "laurel/multi-route": "^1.0.7",
         "spatie/laravel-translatable": "^4.3"
     },
+    "autoload": {
+        "psr-4": {
+            "Laurel\\Menu\\": "src/",
+            "Laurel\\Menu\\App\\": "src/app"
+        }
+    },
     "license": "MIT",
     "authors": [
         {
