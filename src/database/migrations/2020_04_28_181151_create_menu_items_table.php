@@ -18,6 +18,7 @@ class CreateMenuItemsTable extends Migration
             $table->id();
             $table->json('name');
             $table->string('slug')->unique();
+            $table->string('icon')->nullable();
             $table->json('attributes')->nullable();
             $table->foreignId('menu_id');
             $table->foreignId('path_id');
