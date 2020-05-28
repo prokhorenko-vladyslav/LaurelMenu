@@ -44,6 +44,15 @@ class MenuItem extends Model
     ];
 
     /**
+     * By default adds children to every menu item
+     *
+     * @var string[]
+     */
+    protected $with = [
+        "children"
+    ];
+
+    /**
      * Relationship to Menu
      *
      * @return BelongsTo

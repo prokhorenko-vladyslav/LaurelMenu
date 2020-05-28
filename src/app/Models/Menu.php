@@ -53,6 +53,16 @@ class Menu extends Model
     }
 
     /**
+     * Relationship to root MenuItems
+     *
+     * @return HasMany
+     */
+    public function children() : HasMany
+    {
+        return $this->menuItems()->whereNull('parent_id');
+    }
+
+    /**
      * Returns menu using id
      *
      * @param int $id
