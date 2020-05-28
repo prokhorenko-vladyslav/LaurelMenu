@@ -22,7 +22,7 @@ class MenuFacade
     public static function loadMenuById(int $id) : ?Menu
     {
         $menu = config('menu.menu_model')::findById($id);
-        return $menu ? $menu->load('menuItems') : null;
+        return $menu ? $menu->load('children') : null;
     }
 
     /**
@@ -34,7 +34,7 @@ class MenuFacade
     public static function loadMenuBySlug(string $slug) : ?Menu
     {
         $menu = config('menu.menu_model')::findBySlug($slug);
-        return $menu ? $menu->load('menuItems') : null;
+        return $menu ? $menu->load('children') : null;
     }
 
     /**
