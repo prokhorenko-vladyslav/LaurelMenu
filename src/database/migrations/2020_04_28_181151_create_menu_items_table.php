@@ -22,6 +22,8 @@ class CreateMenuItemsTable extends Migration
             $table->foreignId('menu_id');
             $table->foreignId('path_id');
             $table->foreignId('user_id')->nullable();
+            $table->bigInteger('parent_id')->unsigned()->nullable();
+            $table->foreign('parent_id')->references('id')->on('menu_items');
             $table->timestamps();
         });
     }
