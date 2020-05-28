@@ -2,8 +2,10 @@
 
 namespace Laurel\Menu\App\Models;
 
+use Exception;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Laurel\Menu\App\Traits\HasUserRelation;
 use Spatie\Translatable\HasTranslations;
 
@@ -52,11 +54,33 @@ class MenuItem extends Model
     }
 
     /**
+     * Relationship to Path
+     *
      * @return BelongsTo
      */
     public function path() : BelongsTo
     {
         return $this->belongsTo(config('multi-route.path_model'));
+    }
+
+    /**
+     * Relationship child-parent
+     *
+     * @return BelongsTo
+     */
+    public function parent() : BelongsTo
+    {
+        return $this->belongsTo(self::class, 'parent_id');
+    }
+
+    /**
+     * Relationship child-parent
+     *
+     * @return HasMany
+     */
+    public function children() : HasMany
+    {
+        return $this->hasMany(self::class, 'parent_id');
     }
 
     /**
@@ -79,5 +103,18 @@ class MenuItem extends Model
     public static function findBySlug(string $slug) : ?self
     {
         return self::where('slug', $slug)->first();
+    }
+
+    /**
+     * Overriding of base delete model.
+     * Now, method is deleting all children too
+     *
+     * @return bool|null
+     * @throws Exception
+     */
+    public function delete()
+    {
+        $this->children()->delete();
+        return parent::delete();
     }
 }
