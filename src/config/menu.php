@@ -1,6 +1,16 @@
 <?php
     return [
         /**
+         * Use cache or not
+         */
+        'use_cache' => false,
+
+        /**
+         * Cache driver
+         */
+        'cache_driver' => env('CACHE_DRIVER'),
+
+        /**
          * Need to attach user to menu and menu item
          */
         'attach_user' => true,
