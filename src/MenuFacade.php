@@ -2,6 +2,8 @@
 
 namespace Laurel\Menu;
 
+use Laurel\Menu\App\Contracts\MenuContract;
+use Laurel\Menu\App\Contracts\MenuItemContract;
 use Laurel\Menu\App\Models\Menu;
 use Laurel\Menu\App\Models\MenuItem;
 
@@ -19,7 +21,7 @@ class MenuFacade
      * @param int $id
      * @return Menu|null
      */
-    public static function loadMenuById(int $id) : ?Menu
+    public static function loadMenuById(int $id) : ?MenuContract
     {
         $menu = config('menu.menu_model')::findById($id);
         return $menu ? $menu->load('children') : null;
@@ -31,7 +33,7 @@ class MenuFacade
      * @param string $slug
      * @return Menu|null
      */
-    public static function loadMenuBySlug(string $slug) : ?Menu
+    public static function loadMenuBySlug(string $slug) : ?MenuContract
     {
         $menu = config('menu.menu_model')::findBySlug($slug);
         return $menu ? $menu->load('children') : null;
@@ -43,7 +45,7 @@ class MenuFacade
      * @param int $id
      * @return Menu|null
      */
-    public static function loadMenuItemById(int $id) : ?MenuItem
+    public static function loadMenuItemById(int $id) : ?MenuItemContract
     {
         return config('menu.menu_item_model')::findById($id);
     }
@@ -54,7 +56,7 @@ class MenuFacade
      * @param string $slug
      * @return Menu|null
      */
-    public static function loadMenuItemBySlug(string $slug) : ?MenuItem
+    public static function loadMenuItemBySlug(string $slug) : ?MenuItemContract
     {
         return config('menu.menu_item_model')::findBySlug($slug);
     }
