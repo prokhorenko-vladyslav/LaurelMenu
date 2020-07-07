@@ -5,6 +5,7 @@ namespace Laurel\Menu\App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Laurel\Menu\App\Contracts\MenuContract;
 use Laurel\Menu\App\Traits\HasUserRelation;
 use Spatie\Translatable\HasTranslations;
 
@@ -14,7 +15,7 @@ use Spatie\Translatable\HasTranslations;
  * Class Menu
  * @package Laurel\Menu\App\Models
  */
-class Menu extends Model
+class Menu extends Model implements MenuContract
 {
     use HasTranslations;
     use HasUserRelation;
